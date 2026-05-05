@@ -40,7 +40,7 @@ Runs linting and formatting for all files in `src` folder.
 
 Bucket Link - http://nodejs-aws-shop-react-678364257956.s3-website.eu-central-1.amazonaws.com/
 UPDATED !!!
-CloudFront link - https://d2tgwsqaitnpfy.cloudfront.net/
+CloudFront link - https://d1ondnw0chspyw.cloudfront.net/
 
 CloudFront link - Your account must be verified before you can add new CloudFront resources. To verify your account, please contact AWS Support (https://console.aws.amazon.com/support/home#/) and include this error message.
 Was created a service report related to this issue.
