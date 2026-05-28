@@ -12,24 +12,14 @@ export class InfraStackWithCF extends cdk.Stack {
 
     const siteBucket = new s3.Bucket(this, 'ShopReactBucket', {
       bucketName: `nodejs-aws-shop-react-${this.account}`,
-      websiteIndexDocument: 'index.html',
-      websiteErrorDocument: 'index.html',
-      publicReadAccess: true,
-      blockPublicAccess: new s3.BlockPublicAccess({
-        blockPublicAcls: false,
-        blockPublicPolicy: false,
-        ignorePublicAcls: false,
-        restrictPublicBuckets: false,
-      }),
+      blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
       removalPolicy: cdk.RemovalPolicy.DESTROY,
       autoDeleteObjects: true,
     });
 
     const distribution = new cloudfront.Distribution(this, 'ShopReactDistribution', {
       defaultBehavior: {
-        origin: new origins.HttpOrigin(siteBucket.bucketWebsiteDomainName, {
-          protocolPolicy: cloudfront.OriginProtocolPolicy.HTTP_ONLY,
-        }),
+        origin: origins.S3BucketOrigin.withOriginAccessControl(siteBucket),
         viewerProtocolPolicy: cloudfront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
         cachePolicy: cloudfront.CachePolicy.CACHING_OPTIMIZED,
       },

@@ -37,6 +37,9 @@ export default function CSVFileImport({ url, title }: CSVFileImportProps) {
     await fetch(response.data, {
       method: "PUT",
       body: file,
+      headers: {
+        "Content-Type": file.type || "text/csv",
+      },
     });
     setFile(undefined);
   };
