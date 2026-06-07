@@ -23,6 +23,12 @@ export default function Header() {
     setAnchorEl(null);
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("id_token");
+    localStorage.removeItem("authorization_token");
+    window.location.href = "/login";
+  };
+
   return (
     <AppBar position="relative">
       <Toolbar>
@@ -78,6 +84,7 @@ export default function Header() {
               >
                 Manage products
               </MenuItem>
+              <MenuItem onClick={handleLogout}>Logout</MenuItem>
             </Menu>
           </div>
         )}
