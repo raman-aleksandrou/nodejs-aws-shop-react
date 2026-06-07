@@ -21,7 +21,9 @@ axios.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response?.status === 401) {
-      window.location.href = "/login";
+      if (window.location.pathname !== "/login") {
+        window.location.href = "/login";
+      }
     } else if (error.response?.status === 403) {
       alert("Access denied. You do not have permission to perform this action.");
     }
