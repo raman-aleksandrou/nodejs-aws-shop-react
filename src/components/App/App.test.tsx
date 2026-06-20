@@ -18,6 +18,7 @@ test("Renders products list", async () => {
       description: "Product 1 description",
       price: 1,
       count: 1,
+      image: "https://picsum.photos/seed/1/300/200",
     },
     {
       id: "2",
@@ -25,6 +26,7 @@ test("Renders products list", async () => {
       description: "Product 2 description",
       price: 2,
       count: 2,
+      image: "https://picsum.photos/seed/2/300/200",
     },
   ];
   server.use(
